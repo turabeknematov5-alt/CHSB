@@ -1,0 +1,17 @@
+<!doctype html><meta charset="utf-8"><title>NIGHTSHIFT / Demo exam</title>
+<style>body{background:#07100f;color:#bce4d4;font:18px system-ui;max-width:850px;margin:40px auto}button{background:#133b32;color:#8ffff0;border:1px solid #488;padding:12px;margin:10px}#question{border:1px solid #375;padding:28px}label{display:block;padding:10px}small{color:#85a99c}</style>
+<h1>OPERATION NIGHTSHIFT / DEMO</h1><p>Only your Next activation authorizes one solve. Try manual answers or rapid skips.</p>
+<div id="noise"></div><div id="question" data-id="q0"><p class="text">Initial question. This must never be solved automatically.</p><label><input type="radio" name="answer" data-choice="a"> 3</label><label><input type="radio" name="answer" data-choice="b"> 4</label><label><input type="radio" name="answer" data-choice="c"> 5</label></div>
+<button id="next">Next question</button><button id="finish">Final submission</button><p id="result"></p><small>No real exam or credentials. Mock solver always selects b, or a+c for multiple choice.</small>
+<script>
+window.stats={next:0,finish:0,applied:0};let index=Number(new URLSearchParams(location.search).get('q')||0);let generation=0;
+const options=new URLSearchParams(location.search);window.fixture={delay:120,multiple:false,repeated:false,broken:false};
+function render(n){const f=window.fixture;document.querySelector('#question').outerHTML=`<div id="question" data-id="${f.repeated?'repeat':'q'+n}" data-multiple="${f.multiple}"><p class="text">Question ${f.repeated?1:n}: What is 2 + 2?</p><span data-math-pending>Rendering math</span><img src="/image?q=${f.repeated?1:n}" alt="Addition diagram">${['a','b','c'].map((c,i)=>`<label><input type="${f.multiple?'checkbox':'radio'}" name="answer" data-choice="${c}"> ${i+3}</label>`).join('')}</div>`;
+ if(f.broken)document.querySelector('img').src='/broken';
+ setTimeout(()=>{document.querySelector('[data-math-pending]')?.remove();},200);}
+if(index)render(index);
+document.querySelector('#next').onclick=()=>{window.stats.next++;const n=++index;const g=++generation;if(options.has('full')){location.href='/?full&q='+n;return;}history.replaceState(null,'','?q='+n);document.querySelector('#loading')?.remove();document.body.insertAdjacentHTML('beforeend','<div id="loading">Loading new question (old text remains)</div>');setTimeout(()=>{if(g!==generation)return;render(n);document.querySelector('#loading')?.remove();},window.fixture.delay);};
+document.querySelector('#finish').onclick=()=>{window.stats.finish++;document.querySelector('#result').textContent='Submitted manually';};
+document.addEventListener('click',e=>{if(e.target.matches('input[data-choice]')&&!e.isTrusted)window.stats.applied++;});
+setInterval(()=>document.querySelector('#noise').textContent='Background heartbeat '+Date.now(),50);
+</script>

@@ -1,0 +1,1 @@
+{"type":"object","additionalProperties":false,"required":["questionId","status","selectedChoiceIds","explanation","uncertainty"],"properties":{"questionId":{"type":"string"},"status":{"enum":["answered","needs_input"]},"selectedChoiceIds":{"type":"array","items":{"type":"string"}},"explanation":{"type":"string"},"uncertainty":{"type":["string","null"]}}}

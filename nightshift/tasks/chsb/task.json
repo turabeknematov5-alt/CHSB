@@ -1,0 +1,1 @@
+{"id":"chsb","title":"CHSB evaluation","type":"exam","adapter":"adapter.js","url":"https://chsb.piima.uz/student-login","requires":["visible-browser","manual-next","question-images"],"verified":false,"status":"awaiting authenticated DOM inspection; launch blocked until reviewed mapping exists","mappingFile":"selectors.local.json","trigger":"trusted Next activation"}

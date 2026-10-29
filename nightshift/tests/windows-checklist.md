@@ -1,0 +1,12 @@
+# Disposable Windows validation
+
+Use a clean VM snapshot, not the everyday PC. No test here is recorded as executed.
+
+1. Extract the package to a read-only USB containing an unrelated sentinel file. Use a path with spaces, apostrophes and Unicode. Double-click START.cmd. Confirm original launcher cmd exits before the local safe-to-eject message. Eject USB and complete setup; sentinel and USB package hashes must remain unchanged.
+2. Test a clean PC and a PC with pre-existing Node, Edge and Codex. Record version/path and User PATH before launch. Decline browser plugin once; confirm no Node/Chromium/Python/uv install. Select browser on another session. Confirm only missing dependencies install, standalone install uses isolated home/bin and its temporary PATH entry is removed without dropping pre-existing entries.
+3. Close login window, Retry; repeat Choose account/Cancel. Verify email mismatch prevents launch and null-email metadata requires explicit confirmation. Ordinary Codex login/home must be unchanged. The separate login window should exit naturally after success.
+4. Test each preset against actual model/list. Unavailable model/effort must stop or require explicit alternative; no API key requested. Confirm mission summary before website credential prompt.
+5. Run demo mock, keyboard and rapid Next, Pause/Resume, manual override. Confirm no initial solve and no automated Next/final submission. Run npm test; bridge shebang fixtures are explicitly skipped on Windows, browser and contract tests should execute.
+6. End session. For automatic policies, wait for verified cleanup outcome; for Admin test both retain and cleanup. Confirm unrelated processes, shared tools, ordinary Codex data and USB sentinel remain. Add an unknown file/modify a package file: cleanup must preserve it and report leftovers. Run tests/lifecycle.ps1 under Windows PowerShell 5.1 and PowerShell 7 if available.
+7. Kill mission window and reboot once. Its Job Object should close browser/solver descendants. Next launch offers old-session cleanup. Verify PID reuse protection using a mocked process record; never target unrelated processes.
+8. Only with runtime account authorization, inspect CHSB in the shared browser and save a local reviewed mapping. Enter website login only at the masked prompt. Handle CAPTCHA/MFA manually. Verify login success from observed state before starting IDLE. Validate one manual Next/answer cycle and manual override; do not advance or submit automatically.

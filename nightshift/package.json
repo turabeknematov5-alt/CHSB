@@ -1,0 +1,23 @@
+{
+  "name": "nightshift-browser-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && node --test --test-concurrency=1 build/tests/*.test.js",
+    "demo": "npm run build && node build/runtime/cli.js --demo --mock",
+    "package": "node scripts/package.mjs"
+  },
+  "dependencies": {
+    "playwright": "1.58.2"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "tsx": "4.21.0",
+    "typescript": "5.9.3"
+  }
+}

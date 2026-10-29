@@ -1,0 +1,1 @@
+{"id":"demo","title":"Local deterministic demo","type":"exam","adapter":"adapter.js","requires":["visible-browser","manual-next","question-images","single-select","multi-select"],"verified":"automated local browser tests","trigger":"trusted Next activation"}
